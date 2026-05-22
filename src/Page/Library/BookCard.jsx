@@ -1,5 +1,3 @@
-import { TfiWrite } from "react-icons/tfi";
-import { SiBookstack } from "react-icons/si";
 import { Link } from "react-router";
 import { LuBookType, LuSquarePen } from "react-icons/lu";
 

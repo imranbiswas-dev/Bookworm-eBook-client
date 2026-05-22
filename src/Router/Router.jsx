@@ -7,6 +7,7 @@ import DetailsBook from "../Page/Library/DetailsBook";
 import SignUp from "../Page/Authentication/SignUp";
 import Login from "../Page/Authentication/Login";
 import AddBook from "../Page/BookSeller/AddBook";
+import { API } from "../config/config";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("/book.json"),
+        loader: () => fetch(API.books),
         Component: Home,
       },
 
@@ -31,15 +32,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/library",
-        loader: () => fetch("/book.json"),
+        loader: () => fetch(API.books),
         Component: Library,
       },
       {
         path: "/detailsBook/:id",
         loader: async ({ params }) => {
-          const res = await fetch("/book.json");
+          const res = await fetch(API.books);
           const data = await res.json();
-          return data.find((book) => book.id == params.id); // single book return করবে
+          return data.find((book) => book.id == params.id);
         },
         Component: DetailsBook,
       },
