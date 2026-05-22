@@ -1,5 +1,5 @@
-
 import Hero from "../../Components/Header/Hero";
+import Library from "../Library/Library";
 
 const Home = () => {
   return (
@@ -7,6 +7,9 @@ const Home = () => {
       <header>
         <Hero />
       </header>
+      <main>
+        <Library />
+      </main>
     </div>
   );
 };

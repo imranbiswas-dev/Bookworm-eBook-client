@@ -4,7 +4,9 @@ import Navbar from "../Components/Header/Navbar";
 const Layout = () => {
   return (
     <div>
-      <Navbar />
+      <div className="sticky z-100 top-0 ">
+        <Navbar />
+      </div>
       <Outlet />
     </div>
   );
