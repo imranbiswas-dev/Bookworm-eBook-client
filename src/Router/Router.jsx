@@ -4,6 +4,8 @@ import Home from "../Page/Home/Home";
 import Dashboard from "../Page/Dashboard/Dashboard";
 import Library from "../Page/Library/Library";
 import DetailsBook from "../Page/Library/DetailsBook";
+import SignUp from "../Page/Authentication/SignUp";
+import Login from "../Page/Authentication/Login";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ export const router = createBrowserRouter([
           return data.find((book) => book.id == params.id); // single book return করবে
         },
         Component: DetailsBook,
+      },
+      {
+        path: "/signUp",
+        Component: SignUp,
+      },
+      {
+        path: "/login",
+        Component: Login,
       },
     ],
   },

@@ -1,4 +1,3 @@
-import React from "react";
 import { FaFacebookF, FaHeart, FaPinterest, FaTwitter } from "react-icons/fa";
 import { useLoaderData } from "react-router";
 

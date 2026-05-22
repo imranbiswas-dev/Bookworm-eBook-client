@@ -79,7 +79,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end ">
           <div className="mr-3 ">
-            <button
+            <Link to ="/login"
               className="flex items-center gap-2 px-3 py-2 text-orange-600 font-medium 
                transition-all duration-300 ease-in-out 
                hover:text-white hover:bg-orange-600 
@@ -88,7 +88,7 @@ const Navbar = () => {
             >
               <PiSignInBold size={20} />
               <span className="hidden md:block">Sign In</span>
-            </button>
+            </Link>
           </div>
 
           <div className="dropdown dropdown-end mr-3">
