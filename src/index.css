@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "../node_modules/daisyui";
+
+.active{
+    @apply text-orange-600
+}
