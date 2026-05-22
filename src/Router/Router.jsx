@@ -8,6 +8,7 @@ import SignUp from "../Page/Authentication/SignUp";
 import Login from "../Page/Authentication/Login";
 import AddBook from "../Page/BookSeller/AddBook";
 import { API } from "../config/config";
+import SearchResult from "../Components/SearchBox/SearchResult";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         Component: Login,
+      },
+      {
+        path: "/search",
+        Component: SearchResult,
       },
     ],
   },

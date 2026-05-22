@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext.jsx/AuthContext";
 import { LuSquarePen } from "react-icons/lu";
 import AddBook from "../../Page/BookSeller/AddBook";
+import SearchBar from "../SearchBox/SearchBar";
 
 // import { FaPenToSquare } from "react-icons/fa6";
 const Navbar = () => {
@@ -73,29 +74,7 @@ const Navbar = () => {
             {links}
           </ul>
           {/* Search bar */}
-          <div className="w-full">
-            <label className="input w-full">
-              <svg
-                className="h-[1em] opacity-50"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2.5"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.3-4.3"></path>
-                </g>
-              </svg>
-              <input type="search" className="grow" placeholder="Search" />
-              <kbd className="kbd kbd-sm">⌘</kbd>
-              <kbd className="kbd kbd-sm">K</kbd>
-            </label>
-          </div>
+          <SearchBar />
         </div>
         <div className="navbar-end ">
           <div className="mr-3 ">
