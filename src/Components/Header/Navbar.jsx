@@ -1,15 +1,32 @@
 import { Link, NavLink } from "react-router";
 import book from "../../assets/Logo/book.png";
 import { PiSignInBold } from "react-icons/pi";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext.jsx/AuthContext";
+import { FaPenToSquare } from "react-icons/fa6";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const links = (
     <>
-      <NavLink className="hover:underline" to="/dashboard">Dashboard</NavLink>
-      <NavLink className="hover:underline" to="/library">Library</NavLink>
-      <NavLink className="hover:underline" to="/blog">Blog</NavLink>
-      <NavLink className="hover:underline" to="/contact">Contact</NavLink>
+      <NavLink className="hover:underline" to="/dashboard">
+        Dashboard
+      </NavLink>
+      <NavLink className="hover:underline" to="/library">
+        Library
+      </NavLink>
+      <NavLink className="hover:underline" to="/blog">
+        Blog
+      </NavLink>
+      <NavLink className="hover:underline" to="/contact">
+        Contact
+      </NavLink>
     </>
   );
+
+  const handleLogOut = () => {
+    logOut();
+  };
+
   return (
     <div className="max-w-7xl mx-auto ">
       <div className="navbar bg-base-100  shadow-sm md:h-25 ">
@@ -79,16 +96,31 @@ const Navbar = () => {
         </div>
         <div className="navbar-end ">
           <div className="mr-3 ">
-            <Link to ="/login"
-              className="flex items-center gap-2 px-3 py-2 text-orange-600 font-medium 
+            {user ? (
+              <Link
+                to="/publish"
+                className="flex items-center gap-2 px-3 py-2 text-orange-600 font-medium 
                transition-all duration-300 ease-in-out 
                hover:text-white hover:bg-orange-600 
                rounded-md shadow-sm hover:shadow-md 
                active:scale-95"
-            >
-              <PiSignInBold size={20} />
-              <span className="hidden md:block">Sign In</span>
-            </Link>
+              >
+                <FaPenToSquare size={20} />
+                <span className="hidden md:block">Sell Your Book</span>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center gap-2 px-3 py-2 text-orange-600 font-medium 
+               transition-all duration-300 ease-in-out 
+               hover:text-white hover:bg-orange-600 
+               rounded-md shadow-sm hover:shadow-md 
+               active:scale-95"
+              >
+                <PiSignInBold size={20} />
+                <span className="hidden md:block">Sign In</span>
+              </Link>
+            )}
           </div>
 
           <div className="dropdown dropdown-end mr-3">
@@ -100,7 +132,11 @@ const Navbar = () => {
               <div className=" rounded-full border">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src={
+                    user
+                      ? user?.photoURL
+                      : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  }
                 />
               </div>
             </div>
@@ -118,7 +154,7 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <button onClick={handleLogOut}>Logout</button>
               </li>
             </ul>
           </div>

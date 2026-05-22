@@ -1,6 +1,26 @@
+import { useContext } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../Components/Context/AuthContext.jsx/AuthContext";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const handleEmailLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // === form reset ===
+    form.reset();
+  };
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="w-full max-w-md p-8 rounded-xl shadow-lg ">
@@ -9,7 +29,7 @@ const Login = () => {
           Login to your account
         </h2>
         <p className="text-sm text-center text-gray-600 dark:text-gray-400">
-          Don’t have an account?
+          Don't have an account?
           <Link
             to="/signUp"
             className="ml-1 text-blue-600 hover:underline focus:underline"
@@ -62,7 +82,7 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-6">
+        <form onSubmit={handleEmailLogin} className="space-y-6">
           <div>
             <label
               htmlFor="email"
@@ -73,6 +93,7 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              name="email"
               placeholder="example@email.com"
               className="w-full px-4 py-2 mt-1 border rounded-lg shadow-sm 
                          focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
@@ -95,6 +116,7 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              name="password"
               placeholder="••••••"
               className="w-full px-4 py-2 mt-1 border rounded-lg shadow-sm 
                          focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
