@@ -3,6 +3,7 @@ import Layout from "../Layout/Layout";
 import Home from "../Page/Home/Home";
 import Dashboard from "../Page/Dashboard/Dashboard";
 import Library from "../Page/Library/Library";
+import DetailsBook from "../Page/Library/DetailsBook";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,15 @@ export const router = createBrowserRouter([
         path: "/library",
         loader: () => fetch("/book.json"),
         Component: Library,
+      },
+      {
+        path: "/detailsBook/:id",
+        loader: async ({ params }) => {
+          const res = await fetch("/book.json");
+          const data = await res.json();
+          return data.find((book) => book.id == params.id); // single book return করবে
+        },
+        Component: DetailsBook,
       },
     ],
   },

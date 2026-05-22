@@ -1,11 +1,16 @@
 import { TfiWrite } from "react-icons/tfi";
 import { SiBookstack } from "react-icons/si";
+import { Link } from "react-router";
 
 const BookCard = ({ book }) => {
-  const { title, image, author, genre, discountPrice, officialPrice } = book;
+  const { id, title, image, author, genre, discountPrice, officialPrice } =
+    book;
 
   return (
-    <div className="w-full max-w-sm overflow-hidden bg-white rounded-xl shadow-lg dark:bg-gray-800 transition-transform duration-300 hover:scale-102">
+    <Link
+      to={`/detailsBook/${id}`}
+      className="w-full max-w-sm overflow-hidden bg-white rounded-xl shadow-lg dark:bg-gray-800 transition-transform duration-300 hover:scale-102"
+    >
       {/* Book Image */}
       <img
         className="object-cover object-center w-full h-96"
@@ -37,10 +42,8 @@ const BookCard = ({ book }) => {
           </span>
           <span className="line-through text-gray-500">${officialPrice}</span>
         </div>
-
-       
       </div>
-    </div>
+    </Link>
   );
 };
 

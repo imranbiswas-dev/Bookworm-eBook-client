@@ -13,9 +13,9 @@ const Library = () => {
   }
 
   return (
-    <div className="mt-5 mx-5">
-      <h2 className=" text-lg md:text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">
-        📚 Our Latest E‑Books
+    <div>
+      <h2 className="mt-5 text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">
+        📚 Our Latest E-Books
       </h2>
       <div className="grid grid-cols-1 mt-5 md:grid-cols-2 lg:grid-cols-3 justify-self-center gap-10">
         {books.map((book) => (
