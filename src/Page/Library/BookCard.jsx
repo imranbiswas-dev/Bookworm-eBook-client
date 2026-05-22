@@ -1,6 +1,7 @@
 import { TfiWrite } from "react-icons/tfi";
 import { SiBookstack } from "react-icons/si";
 import { Link } from "react-router";
+import { LuBookType, LuSquarePen } from "react-icons/lu";
 
 const BookCard = ({ book }) => {
   const { id, title, image, author, genre, discountPrice, officialPrice } =
@@ -18,12 +19,12 @@ const BookCard = ({ book }) => {
         alt={title}
       />
 
-      {/* Author Bar */}
+      {/* Genre */}
       <div className="flex items-center px-6 py-3 bg-orange-600">
-        <TfiWrite size={22} className="text-white" />
-        <h1 className="mx-3 text-lg font-semibold text-white">{author}</h1>
+        <LuBookType size={18} className="mr-2 text-white" />
+      <span className="text-sm text-white">{genre}</span>
       </div>
-
+      
       {/* Book Info */}
       <div className="px-6 py-4">
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
@@ -31,8 +32,8 @@ const BookCard = ({ book }) => {
         </h1>
 
         <div className="flex items-center mt-2 text-gray-600 dark:text-gray-300">
-          <SiBookstack size={18} className="mr-2 text-orange-600" />
-          <span className="text-sm">{genre}</span>
+          <LuSquarePen size={20} className="" />
+          <h1 className="mx-3 text-sm font-semibold ">{author}</h1>
         </div>
 
         {/* Price Section */}
