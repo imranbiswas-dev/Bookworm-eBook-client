@@ -6,6 +6,7 @@ import Library from "../Page/Library/Library";
 import DetailsBook from "../Page/Library/DetailsBook";
 import SignUp from "../Page/Authentication/SignUp";
 import Login from "../Page/Authentication/Login";
+import AddBook from "../Page/BookSeller/AddBook";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         Component: Dashboard,
+      },
+      {
+        path: "/addBook",
+        Component: AddBook,
       },
       {
         path: "/library",

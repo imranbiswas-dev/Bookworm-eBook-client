@@ -3,7 +3,10 @@ import book from "../../assets/Logo/book.png";
 import { PiSignInBold } from "react-icons/pi";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext.jsx/AuthContext";
-import { FaPenToSquare } from "react-icons/fa6";
+import { LuSquarePen } from "react-icons/lu";
+import AddBook from "../../Page/BookSeller/AddBook";
+
+// import { FaPenToSquare } from "react-icons/fa6";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const links = (
@@ -97,17 +100,19 @@ const Navbar = () => {
         <div className="navbar-end ">
           <div className="mr-3 ">
             {user ? (
-              <Link
-                to="/publish"
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
                 className="flex items-center gap-2 px-3 py-2 text-orange-600 font-medium 
                transition-all duration-300 ease-in-out 
                hover:text-white hover:bg-orange-600 
                rounded-md shadow-sm hover:shadow-md 
                active:scale-95"
               >
-                <FaPenToSquare size={20} />
+                <LuSquarePen />
                 <span className="hidden md:block">Sell Your Book</span>
-              </Link>
+              </button>
             ) : (
               <Link
                 to="/login"
@@ -121,6 +126,19 @@ const Navbar = () => {
                 <span className="hidden md:block">Sign In</span>
               </Link>
             )}
+
+            {/* Add Book Form Modal */}
+            <dialog id="my_modal_3" className="modal">
+              <div className="modal-box">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                <AddBook />
+              </div>
+            </dialog>
           </div>
 
           <div className="dropdown dropdown-end mr-3">
