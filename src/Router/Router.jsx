@@ -9,6 +9,7 @@ import Login from "../Page/Authentication/Login";
 import AddBook from "../Page/BookSeller/AddBook";
 import { API } from "../config/config";
 import SearchResult from "../Components/SearchBox/SearchResult";
+import UpdateBook from "../Page/BookSeller/UpdateBook";
 
 export const router = createBrowserRouter([
   {
@@ -39,11 +40,16 @@ export const router = createBrowserRouter([
       {
         path: "/detailsBook/:id",
         loader: async ({ params }) => {
-          const res = await fetch(API.books);
-          const data = await res.json();
-          return data.find((book) => book.id == params.id);
+          const res = await fetch(`${API.books}/id/${params.id}`);
+          if (!res.ok) throw new Error("Book not found");
+          return res.json();
         },
         Component: DetailsBook,
+      },
+
+      {
+        path: "/update/:id", 
+        Component: UpdateBook,
       },
       {
         path: "/signUp",

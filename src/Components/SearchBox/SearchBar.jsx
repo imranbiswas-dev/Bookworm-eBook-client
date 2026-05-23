@@ -17,8 +17,8 @@ const SearchBar = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="w-full">
-          <label className="input w-full">
+        <div className="w-150">
+          <label className="input w-150">
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"

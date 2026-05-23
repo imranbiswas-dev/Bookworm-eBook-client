@@ -2,12 +2,12 @@ import { Link } from "react-router";
 import { LuBookType, LuSquarePen } from "react-icons/lu";
 
 const BookCard = ({ book }) => {
-  const { id, title, image, author, genre, discountPrice, officialPrice } =
+  const { _id, title, image, author, genre, discountPrice, officialPrice } =
     book;
 
   return (
     <Link
-      to={`/detailsBook/${id}`}
+      to={`/detailsBook/${_id}`}
       className="w-full max-w-sm overflow-hidden bg-white rounded-xl shadow-lg dark:bg-gray-800 transition-transform duration-300 hover:scale-102"
     >
       {/* Book Image */}
