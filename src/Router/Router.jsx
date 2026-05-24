@@ -46,9 +46,9 @@ export const router = createBrowserRouter([
         },
         Component: DetailsBook,
       },
-
       {
-        path: "/update/:id", 
+        path: "/update/:id",
+        loader: ({params}) => fetch(`${API.books}/id/${params.id}`),
         Component: UpdateBook,
       },
       {

@@ -18,9 +18,9 @@ const BookCard = ({ book }) => {
       />
 
       {/* Genre */}
-      <div className="flex items-center px-6 py-3 bg-orange-600">
+      <div className="flex items-center px-6 py-3 bg-orange-600/80">
         <LuBookType size={18} className="mr-2 text-white" />
-      <span className="text-sm text-white">{genre}</span>
+      <span className="text-sm text-white font-semibold">{genre}</span>
       </div>
       
       {/* Book Info */}

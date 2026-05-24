@@ -4,7 +4,6 @@ import { API } from "./../../config/config";
 import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router";
 
-import UpdateBook from "../BookSeller/UpdateBook";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -129,33 +128,18 @@ const Dashboard = () => {
                       <FiEye size={14} />
                     </Link>
 
-                    <button
-                      onClick={() =>
-                        document.getElementById("my_modal_4").showModal()
-                      }
+                    <Link
+                      to={`/update/${book._id}`}
                       className="btn btn-sm join-item flex items-center gap-1"
                     >
                       <FiEdit size={14} />
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(book._id)}
                       className="btn btn-sm join-item flex items-center gap-1 text-red-500"
                     >
                       <FiTrash2 size={14} />
                     </button>
-
-                    {/* Add Book Form Modal */}
-                    <dialog id="my_modal_4" className="modal">
-                      <div className="modal-box">
-                        <form method="dialog">
-                          {/* if there is a button in form, it will close the modal */}
-                          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                            ✕
-                          </button>
-                        </form>
-                        <UpdateBook book={book} />
-                      </div>
-                    </dialog>
                   </div>
                 </span>
               </div>
