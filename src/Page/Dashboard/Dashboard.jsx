@@ -3,7 +3,7 @@ import { AuthContext } from "./../../Components/Context/AuthContext.jsx/AuthCont
 import { API } from "./../../config/config";
 import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router";
-
+import Swal from "sweetalert2";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -38,13 +38,32 @@ const Dashboard = () => {
 
   // === Delete Card ===
   const handleDelete = (_id) => {
-    fetch(`${API.books}/${_id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc2626",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${API.books}/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            const remainingBooks = books.filter((book) => book._id !== _id);
+            setBooks(remainingBooks);
+          });
+        Swal.fire(
+          "Deleted!",
+          "Listing has been deleted successfully.",
+          "success",
+        );
+      }
+    });
   };
 
   console.log(books);

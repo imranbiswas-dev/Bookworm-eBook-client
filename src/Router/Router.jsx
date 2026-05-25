@@ -10,6 +10,9 @@ import AddBook from "../Page/BookSeller/AddBook";
 import { API } from "../config/config";
 import SearchResult from "../Components/SearchBox/SearchResult";
 import UpdateBook from "../Page/BookSeller/UpdateBook";
+import PrivateRouter from "./PrivateRouter";
+import Contact from "../Page/Contact/Contact";
+import About from "../Page/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +29,11 @@ export const router = createBrowserRouter([
 
       {
         path: "/dashboard",
-        Component: Dashboard,
+        element: (
+          <PrivateRouter>
+            <Dashboard />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/addBook",
@@ -44,11 +51,15 @@ export const router = createBrowserRouter([
           if (!res.ok) throw new Error("Book not found");
           return res.json();
         },
-        Component: DetailsBook,
+        element: (
+          <PrivateRouter>
+            <DetailsBook />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/update/:id",
-        loader: ({params}) => fetch(`${API.books}/id/${params.id}`),
+        loader: ({ params }) => fetch(`${API.books}/id/${params.id}`),
         Component: UpdateBook,
       },
       {
@@ -62,6 +73,15 @@ export const router = createBrowserRouter([
       {
         path: "/search",
         Component: SearchResult,
+      },
+
+      {
+        path: "/contact",
+        Component: Contact,
+      },
+      {
+        path: "/about",
+        Component: About,
       },
     ],
   },

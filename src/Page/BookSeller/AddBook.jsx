@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { API } from "./../../config/config";
 import { AuthContext } from "../../Components/Context/AuthContext.jsx/AuthContext";
+import { useNavigate } from "react-router";
 const AddBook = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleAddBook = (e) => {
     e.preventDefault();
 
@@ -24,8 +26,12 @@ const AddBook = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        e.target.reset();
+        console.log("Response:", data);
+
+       e.target.reset();
+       setTimeout(() => {
+            navigate("/");
+          }, 1600);
       });
   };
   return (

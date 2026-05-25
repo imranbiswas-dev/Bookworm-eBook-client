@@ -1,7 +1,9 @@
+import { Link } from "react-router";
+
 const Hero = () => {
   return (
     <div className="max-w-7xl mx-auto">
-        {/* Large and medium view */}
+      {/* Large and medium view */}
       <header className="bg-white dark:bg-gray-900 hidden md:block">
         <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center">
           <div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
@@ -22,7 +24,7 @@ const Hero = () => {
                 creativity, build your audience, and explore thousands of
                 digital books anytime, anywhere.
               </p>
-              <div className="">
+              <Link to="/library" className="">
                 <button
                   className="px-6 py-2.5 mt-6 text-sm font-medium leading-5 text-center 
              text-white capitalize bg-orange-600/80 rounded-lg 
@@ -31,16 +33,27 @@ const Hero = () => {
                 >
                   Discover New E-Books
                 </button>
-              </div>
+              </Link>
             </div>
           </div>
 
-          <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
+          {/* <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
             <img
               className="object-cover w-full h-full max-w-2xl rounded-lg shadow-md"
               src="https://static.vecteezy.com/system/resources/thumbnails/056/111/199/small/digital-technology-book-photo.jpg"
               alt="apple watch photo"
             />
+          </div> */}
+
+          <div className="lg:col-span-5 relative group justify-self-center">
+            <div className="absolute -inset-2 bg-linear-to-r from-orange-600 to-amber-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+            <div className="relative bg-white dark:bg-gray-800 p-3 rounded-2xl shadow-xl">
+              <img 
+                src="https://static.vecteezy.com/system/resources/thumbnails/056/111/199/small/digital-technology-book-photo.jpg" 
+                alt="Digital E-Book Library Application" 
+                className="rounded-xl w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -68,14 +81,15 @@ const Hero = () => {
               Discover a modern platform where readers can enjoy unlimited
               e-books and writers can easily publish their own.
             </p>
-            <button
-              className="mt-4 px-4 py-2 text-sm font-medium text-white 
+            <Link
+              to="/library"
+              className="mt-4 btn px-4 py-2 text-sm font-medium text-white 
                    capitalize bg-orange-600/80 rounded-lg 
                    hover:bg-orange-600 transition-all duration-300 
                    shadow-md hover:shadow-lg active:scale-95"
             >
               Discover New E-Books
-            </button>
+            </Link>
           </div>
         </div>
       </header>

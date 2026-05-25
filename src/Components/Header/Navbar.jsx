@@ -18,8 +18,8 @@ const Navbar = () => {
       <NavLink className="hover:underline" to="/library">
         Library
       </NavLink>
-      <NavLink className="hover:underline" to="/blog">
-        Blog
+      <NavLink className="hover:underline" to="/about">
+        About
       </NavLink>
       <NavLink className="hover:underline" to="/contact">
         Contact
