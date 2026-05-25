@@ -1,3 +1,3 @@
 export const API = {
-  books: "http://localhost:5000/books",
+  books: "https://bookworm-ebook-server.onrender.com/books",
 };
