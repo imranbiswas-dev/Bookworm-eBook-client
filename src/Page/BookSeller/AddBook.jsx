@@ -17,7 +17,7 @@ const AddBook = () => {
       userPhoto: user.photoURL,
       email: user.email,
     };
-    console.log(newBook);
+
 
     fetch(API.books, {
       method: "POST",

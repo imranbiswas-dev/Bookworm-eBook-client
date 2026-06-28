@@ -8,38 +8,47 @@ const BookCard = ({ book }) => {
   return (
     <Link
       to={`/detailsBook/${_id}`}
-      className="w-full max-w-sm overflow-hidden bg-white rounded-xl shadow-lg dark:bg-gray-800 transition-transform duration-300 hover:scale-102"
+      className="group relative flex w-full max-w-full flex-col overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900"
     >
-      {/* Book Image */}
-      <img
-        className="object-cover object-center w-full h-96"
-        src={image}
-        alt={title}
-      />
-
-      {/* Genre */}
-      <div className="flex items-center px-6 py-3 bg-orange-600/80">
-        <LuBookType size={18} className="mr-2 text-white" />
-      <span className="text-sm text-white font-semibold">{genre}</span>
+      {/* Book Image Container */}
+      <div className="relative aspect-3/4 w-full overflow-hidden bg-neutral-100 dark:bg-neutral-950 h-40 sm:h-60 md:h-90">
+        <img
+          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          src={image}
+          alt={title}
+        />
+        {/* Absolute Genre Badge - Premium look */}
+        <div className="absolute top-2 left-2 flex items-center gap-1 rounded-lg bg-neutral-900/80 px-2 py-1 backdrop-blur-md dark:bg-neutral-800/90">
+          <LuBookType size={12} className="text-amber-500" />
+          <span className="text-[10px] md:font-bold uppercase tracking-wider text-white sm:text-xs">
+            {genre}
+          </span>
+        </div>
       </div>
-      
+
       {/* Book Info */}
-      <div className="px-6 py-4">
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
+        {/* Title */}
+        <h1 className="line-clamp-1 text-sm font-bold text-neutral-800 transition-colors duration-200 group-hover:text-amber-600 dark:text-neutral-100 sm:text-base md:text-lg">
           {title}
         </h1>
 
-        <div className="flex items-center mt-2 text-gray-600 dark:text-gray-300">
-          <LuSquarePen size={20} className="" />
-          <h1 className="mx-3 text-sm font-semibold ">{author}</h1>
+        {/* Author */}
+        <div className="mt-1 flex items-center gap-1.5 text-neutral-500 dark:text-neutral-400">
+          <LuSquarePen size={14} className="shrink-0 text-neutral-400" />
+          <p className="truncate text-xs font-medium">{author}</p>
         </div>
 
         {/* Price Section */}
-        <div className="flex items-center justify-between mt-4">
-          <span className="text-lg font-bold text-orange-600">
-            ${discountPrice}
-          </span>
-          <span className="line-through text-gray-500">${officialPrice}</span>
+        <div className="mt-auto pt-3 flex items-baseline justify-between gap-2 border-t border-neutral-50 dark:border-neutral-800">
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-sm font-black text-amber-600 sm:text-base md:text-lg">
+              ${discountPrice}
+            </span>
+            <span className="text-[10px] text-neutral-400 line-through sm:text-xs">
+              ${officialPrice}
+            </span>
+          </div>
         </div>
       </div>
     </Link>

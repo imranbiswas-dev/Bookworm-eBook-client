@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { AuthContext } from "../../Components/Context/AuthContext.jsx/AuthContext";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn , googleLogin} = useContext(AuthContext);
   const handleEmailLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,6 +21,11 @@ const Login = () => {
     // === form reset ===
     form.reset();
   };
+
+  // sign in with google 
+const handleGoogleLogin = ()=>{
+  googleLogin()
+}
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="w-full max-w-md p-8 rounded-xl shadow-lg ">
@@ -40,7 +45,7 @@ const Login = () => {
 
         {/* Social Login */}
         <div className="my-6">
-          <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+          <button onClick={()=>handleGoogleLogin()} className="btn bg-white text-black border-[#e5e5e5] w-full">
             <svg
               aria-label="Google logo"
               width="16"
